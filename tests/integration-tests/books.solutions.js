@@ -14,7 +14,7 @@ describe("routes/books", () => {
       console.log("connected to test DB successfully");
     });
 
-    Book.deleteMany().exec();
+    await Book.deleteMany().exec();
   });
 
   it("GET /books should return status of 200 and all books in the test DB", async () => {
@@ -72,9 +72,9 @@ describe("routes/books", () => {
     // false positive. passing even though the assertion fails
   });
 
-  afterAll(done => {
-    Book.deleteMany().exec();
-    db.close();
-    done();
+  afterAll(async () => {
+    await Book.deleteMany().exec();
+    await db.close();
+    
   });
 });
