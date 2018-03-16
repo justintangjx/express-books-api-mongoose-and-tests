@@ -29,7 +29,7 @@ describe("routes/books", () => {
       
   });
 
-  it("POST /books should create book", () => {
+  it("POST /books should create book", async () => {
     const TITLE = "harry potter";
     const SUMMARY = "harry survives";
 
@@ -46,7 +46,7 @@ describe("routes/books", () => {
       
   });
 
-  it("PUT /books/:id should update book", done => {
+  it("PUT /books/:id should update book", async() => {
     const TITLE = "harry potter";
     const NEW_TITLE = `new ${TITLE}`;
     const SUMMARY = "harry survives";
@@ -65,7 +65,7 @@ describe("routes/books", () => {
           expect(response.body.book.summary).toEqual(SUMMARY);
         
     });
-    done();
+    
     // false positive. passing even though the assertion fails
   });
 
